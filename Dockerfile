@@ -1,15 +1,21 @@
-FROM nginx:1.26-alpine AS base
+FROM nginxinc/nginx-unprivileged:1.26-alpine AS base
 WORKDIR /app
-RUN rm -rf /usr/share/nginx/html/*
-EXPOSE 80
+EXPOSE 8080
 
 FROM node:20.17.0-alpine AS build
-WORKDIR /src
+WORKDIR /build
 COPY package*.json .
-RUN npm install
-COPY . .
+RUN npm ci --ignore-scripts
+COPY src src
+COPY public public
+COPY index.html .
+COPY tsconfig.app.json .
+COPY tsconfig.json .
+COPY tsconfig.node.json .
+COPY vite.config.ts .
 RUN npm run build
 
 FROM base AS final
-COPY --from=build /src/dist /usr/share/nginx/html
+COPY --from=build /build/dist /usr/share/nginx/html
+USER nginx
 CMD ["nginx", "-g", "daemon off;"]
