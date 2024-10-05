@@ -1,0 +1,17 @@
+services:
+  smaiax-frontend:
+    image: smaiax-frontend
+    container_name: "smaiax-frontend"
+    restart: always
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - smaiax-frontend-network
+
+networks:
+  smaiax-frontend-network:
+    name: "smaiax-frontend-network"
+    driver: bridge
