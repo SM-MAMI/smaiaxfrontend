@@ -53,8 +53,6 @@ const SignUpContainer = styled(Stack)(({ theme }) => ({
 
 export default function SignUp() {
   const [mode, setMode] = React.useState<PaletteMode>('light');
-  const [showCustomTheme, setShowCustomTheme] = React.useState(true);
-  const defaultTheme = createTheme({ palette: { mode } });
   const SignUpTheme = createTheme(getSignUpTheme(mode));
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
@@ -81,10 +79,6 @@ export default function SignUp() {
     const newMode = mode === 'dark' ? 'light' : 'dark';
     setMode(newMode);
     localStorage.setItem('themeMode', newMode); // Save the selected mode to localStorage
-  };
-
-  const toggleCustomTheme = () => {
-    setShowCustomTheme((prev) => !prev);
   };
 
   const validateInputs = () => {
@@ -137,12 +131,10 @@ export default function SignUp() {
 
   return (
     <TemplateFrame
-      toggleCustomTheme={toggleCustomTheme}
-      showCustomTheme={showCustomTheme}
       mode={mode}
       toggleColorMode={toggleColorMode}
     >
-      <ThemeProvider theme={showCustomTheme ? SignUpTheme : defaultTheme}>
+      <ThemeProvider theme={SignUpTheme}>
         <CssBaseline enableColorScheme />
 
         <SignUpContainer direction="column" justifyContent="space-between">
