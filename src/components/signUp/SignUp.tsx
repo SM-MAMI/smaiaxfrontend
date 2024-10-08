@@ -61,8 +61,7 @@ export default function SignUp() {
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState("");
 
-  // eslint-disable-next-line no-use-before-define
-  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  const emailRegex = /^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/;
 
   // This code only runs on the client side, to determine the system color preference
   React.useEffect(() => {
