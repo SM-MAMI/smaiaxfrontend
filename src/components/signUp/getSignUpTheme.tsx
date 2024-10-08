@@ -23,6 +23,7 @@ declare module "@mui/material/styles/createPalette" {
     900: string;
   }
 
+  // eslint-disable-next-line no-use-before-define
   interface PaletteColor extends ColorRange {}
 }
 

@@ -60,6 +60,10 @@ export default function SignUp() {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState("");
+
+  // eslint-disable-next-line no-use-before-define
+  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
   // This code only runs on the client side, to determine the system color preference
   React.useEffect(() => {
     // Check if there is a preferred mode in localStorage
@@ -88,7 +92,7 @@ export default function SignUp() {
 
     let isValid = true;
 
-    if (!email.value || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.value)) {
+    if (!email.value || !emailRegex.test(email.value)) {
       setEmailError(true);
       setEmailErrorMessage("Please enter a valid email address.");
       isValid = false;
