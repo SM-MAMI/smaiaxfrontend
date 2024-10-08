@@ -9,24 +9,6 @@ import {
 import CheckBoxOutlineBlankRoundedIcon from "@mui/icons-material/CheckBoxOutlineBlankRounded";
 import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
 
-declare module "@mui/material/styles/createPalette" {
-  interface ColorRange {
-    50: string;
-    100: string;
-    200: string;
-    300: string;
-    400: string;
-    500: string;
-    600: string;
-    700: string;
-    800: string;
-    900: string;
-  }
-
-  // eslint-disable-next-line no-use-before-define
-  interface PaletteColor extends ColorRange {}
-}
-
 const customTheme = createTheme();
 
 export const brand = {
