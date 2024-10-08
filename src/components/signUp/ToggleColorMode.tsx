@@ -1,8 +1,8 @@
-import { PaletteMode } from '@mui/material/styles';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import { PaletteMode } from "@mui/material/styles";
+import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 
-import ModeNightRoundedIcon from '@mui/icons-material/ModeNightRounded';
-import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
+import ModeNightRoundedIcon from "@mui/icons-material/ModeNightRounded";
+import WbSunnyRoundedIcon from "@mui/icons-material/WbSunnyRounded";
 
 interface ToggleColorModeProps extends IconButtonProps {
   mode: PaletteMode;
@@ -13,7 +13,7 @@ export default function ToggleColorMode({
   mode,
   toggleColorMode,
   ...props
-}: ToggleColorModeProps) {
+}: Readonly<ToggleColorModeProps>) {
   return (
     <IconButton
       onClick={toggleColorMode}
@@ -22,7 +22,7 @@ export default function ToggleColorMode({
       aria-label="Theme toggle button"
       {...props}
     >
-      {mode === 'dark' ? (
+      {mode === "dark" ? (
         <WbSunnyRoundedIcon fontSize="small" />
       ) : (
         <ModeNightRoundedIcon fontSize="small" />
