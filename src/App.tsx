@@ -1,14 +1,12 @@
-import './App.css'
-import SignUp from './components/signUp/SignUp'
+import "./App.css";
+import ColorModeSelect from "./themes/ColorModeSelect";
 
 function App() {
   return (
     <>
-      <div>
-        <SignUp></SignUp>
-      </div>
+      <ColorModeSelect sx={{ position: "fixed", top: "1rem", right: "1rem" }} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
